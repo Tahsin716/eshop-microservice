@@ -6,9 +6,9 @@ namespace Discount.API.Repositories
 {
     public class DiscountRepository : IDiscountRepository
     {
-        private readonly DiscountDbContext _context;
+        private readonly IDiscountDbContext _context;
 
-        public DiscountRepository(DiscountDbContext context)
+        public DiscountRepository(IDiscountDbContext context)
         {
             _context = context;
         }
