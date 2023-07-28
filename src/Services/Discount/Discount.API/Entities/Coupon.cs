@@ -2,9 +2,9 @@
 {
     public class Coupon
     {
-        public int Id { get; set; }
-        public string ProductName { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public int Amount { get; set; }
+        public int id { get; set; }
+        public string productname { get; set; } = string.Empty;
+        public string description { get; set; } = string.Empty;
+        public int amount { get; set; }
     }
 }

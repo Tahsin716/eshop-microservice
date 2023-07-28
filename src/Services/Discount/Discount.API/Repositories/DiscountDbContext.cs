@@ -10,6 +10,6 @@ namespace Discount.API.Repositories
         {
         }
 
-        public DbSet<Coupon> Coupons { get; set; }
+        public DbSet<Coupon> coupon { get; set; }
     }
 }
