@@ -12,7 +12,6 @@ namespace Discount.API.Repositories
         public DiscountRepository(DiscountDbContext context)
         {
             _context = context;
-            DiscountSeedContext.Seed(context);
         }
 
         public async Task<Coupon> GetCoupon(string productName)
