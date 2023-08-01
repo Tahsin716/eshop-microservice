@@ -27,19 +27,21 @@ namespace Discount.API.Repositories
             };
         }
 
-        public async Task CreateCoupon(Coupon coupon)
+        public async Task<bool> CreateCoupon(Coupon coupon)
         {
             await _context.coupon.AddAsync(coupon);
-            await _context.SaveChangesAsync();
+            int dbEntries = await _context.SaveChangesAsync();
+            return dbEntries > 0;
         }
 
-        public async Task UpdateCoupon(Coupon coupon)
+        public async Task<bool> UpdateCoupon(Coupon coupon)
         {
             _context.coupon.Update(coupon);
-            await _context.SaveChangesAsync();
+            int dbEntries = await _context.SaveChangesAsync();
+            return dbEntries > 0;
         }
 
-        public async Task DeleteCoupon(string productName)
+        public async Task<bool> DeleteCoupon(string productName)
         {
             var coupon = await _context.coupon
                 .FirstOrDefaultAsync(x => x.productname == productName);
@@ -47,8 +49,11 @@ namespace Discount.API.Repositories
             if (coupon != null)
             {
                 _context.coupon.Remove(coupon);
-                await _context.SaveChangesAsync();
+                int dbEntries = await _context.SaveChangesAsync();
+                return dbEntries > 0;
             }
+
+            return false;
         }
     }
 }
