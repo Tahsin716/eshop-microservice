@@ -1,5 +1,4 @@
-﻿using Discount.API.Data;
-using Discount.API.Entities;
+﻿using Discount.API.Entities;
 using Discount.API.Repositories.Contracts;
 using Microsoft.EntityFrameworkCore;
 
