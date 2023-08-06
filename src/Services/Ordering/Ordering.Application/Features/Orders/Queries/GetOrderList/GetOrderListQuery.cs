@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace Ordering.Application.Features.Orders.Queries.GetOrderList
 {
-    internal class GetOrderListQuery
+    public class GetOrderListQuery : IRequest<List<OrderDto>>
     {
+        public string UserName { get; set; }
+
+        public GetOrderListQuery(string userName)
+        {
+            UserName = userName;
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Ordering.Application.Features.Orders.Queries.GetOrderList
 {
-    public class GetOrderListResponseModel
+    public class OrderDto
     {
         public int Id { get; set; }
         public string UserName { get; set; } = string.Empty;

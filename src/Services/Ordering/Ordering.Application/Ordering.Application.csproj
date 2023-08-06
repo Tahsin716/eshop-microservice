@@ -13,7 +13,6 @@
   <ItemGroup>
     <Folder Include="Behaviours\" />
     <Folder Include="Features\Orders\Commands\" />
-    <Folder Include="Mappings\" />
   </ItemGroup>
 
   <ItemGroup>
