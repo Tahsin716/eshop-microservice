@@ -1,13 +1,6 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using Ordering.Application.Contracts.Persistance;
-using Ordering.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ordering.Application.Features.Orders.Commands.DeleteOrder
 {
@@ -26,7 +19,7 @@ namespace Ordering.Application.Features.Orders.Commands.DeleteOrder
         public async Task<Unit> Handle(DeleteOrderCommand request, CancellationToken cancellationToken)
         {
             var orderToDelete = await _orderRepository.GetByIdAsync(request.Id);
-            
+
             if (orderToDelete == null)
             {
                 _logger.LogInformation($"No order found with order id: {request.Id}");
