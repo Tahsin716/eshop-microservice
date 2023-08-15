@@ -1,19 +1,37 @@
-﻿using Ordering.Application.Contracts.Persistance;
+﻿using Microsoft.EntityFrameworkCore;
+using Ordering.Application.Contracts.Persistance;
 using Ordering.Domain.Common;
+using Ordering.Infrastructure.Persistance;
 using System.Linq.Expressions;
 
 namespace Ordering.Infrastructure.Repositories
 {
     public class RepositoryBase<T> : IAsyncRepository<T> where T : EntityBase
     {
-        public Task<T> AddAsync(T entity)
+        protected readonly OrderContext _dbContext;
+
+        public RepositoryBase(OrderContext dbContext)
         {
-            throw new NotImplementedException();
+            _dbContext = dbContext;
         }
 
-        public Task DeleteAsync(T entity)
+        public async Task<T> AddAsync(T entity)
         {
-            throw new NotImplementedException();
+            _dbContext.Set<T>().Add(entity);
+            await _dbContext.SaveChangesAsync();
+            return entity;
+        }
+
+        public async Task DeleteAsync(T entity)
+        {
+            _dbContext.Set<T>().Remove(entity);
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(T entity)
+        {
+            _dbContext.Entry(entity).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
         }
 
         public Task<IReadOnlyList<T>> GetAllAsync()
@@ -41,9 +59,5 @@ namespace Ordering.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(T entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
