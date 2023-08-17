@@ -5,6 +5,11 @@ namespace Ordering.Infrastructure.Persistance
 {
     public class OrderContextSeed
     {
+        protected OrderContextSeed()
+        {
+
+        }
+
         public static async Task SeedAsync(OrderContext orderContext, ILogger<OrderContextSeed> logger)
         {
             if (!orderContext.Orders.Any())
