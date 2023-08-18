@@ -88,10 +88,14 @@ services:
     ports:
       - "8003:80"
 
-
   ordering.api:
+    container_name: ordering.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:OrderingConnectionString=Server=orderdb;Database=OrderDb;User Id=sa;Password=SwN12345678"  
+    depends_on:
+        - orderdb
+        - rabbitmq
     ports:
-      - "80"
+        - "8004:80"
 
