@@ -88,3 +88,10 @@ services:
     ports:
       - "8003:80"
 
+
+  ordering.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
