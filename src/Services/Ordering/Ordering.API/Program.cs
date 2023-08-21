@@ -1,3 +1,4 @@
+using MassTransit;
 using Ordering.API.Extensions;
 using Ordering.Application;
 using Ordering.Infrastructure;
@@ -13,6 +14,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddMassTransit(configuration => {
+    configuration.UsingRabbitMq((context, config) => {
+        config.Host(builder.Configuration.GetValue<string>("EventBusSettings:HostAddress"));
+    });
+});
+
 var app = builder.Build();
 
 app.MigrateDatabase<OrderContext>((context, services) =>
@@ -22,6 +29,7 @@ app.MigrateDatabase<OrderContext>((context, services) =>
         .SeedAsync(context, logger)
         .Wait();
 });
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
