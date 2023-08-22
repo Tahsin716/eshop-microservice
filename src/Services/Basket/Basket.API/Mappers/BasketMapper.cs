@@ -8,7 +8,7 @@ namespace Basket.API.Mappers
     {
         public BasketMapper()
         {
-            CreateMap<BasketCheckoutEvent, BasketCheckout>();
+            CreateMap<BasketCheckoutEvent, BasketCheckout>().ReverseMap();
         }
     }
 }
