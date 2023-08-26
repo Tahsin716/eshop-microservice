@@ -2,6 +2,7 @@
 using Basket.API.Entities;
 using Basket.API.Repository.Contracts;
 using Basket.API.Services.Contracts;
+using EventBus.Messages.Common;
 using EventBus.Messages.Events;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
@@ -73,7 +74,9 @@ namespace Basket.API.Controllers
 
             var eventMessage = _mapper.Map<BasketCheckoutEvent>(basketCheckout);
             eventMessage.TotalPrice = basket.TotalPrice;
-            await _publishEndpoint.Publish(eventMessage);
+
+            await _publishEndpoint.Publish(eventMessage,context => 
+                context.SetRoutingKey(EventBusConstants.BasketCheckoutQueue));
 
             await _repository.DeleteBasket(basket.UserName);
 

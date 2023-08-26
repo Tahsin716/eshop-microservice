@@ -25,6 +25,13 @@ builder.Services.AddMassTransit(configuration => {
     });
 });
 
+builder.Services.Configure<MassTransitHostOptions>(options =>
+{
+    options.WaitUntilStarted = true;
+    options.StartTimeout = TimeSpan.FromSeconds(30);
+    options.StopTimeout = TimeSpan.FromMinutes(1);
+});
+
 builder.Services.AddScoped<IDiscountGrpcService, DiscountGrpcService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

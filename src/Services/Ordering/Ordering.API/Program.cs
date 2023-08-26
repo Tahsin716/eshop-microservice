@@ -34,6 +34,13 @@ builder.Services.AddMassTransit(configuration =>
     });
 });
 
+builder.Services.Configure<MassTransitHostOptions>(options =>
+{
+    options.WaitUntilStarted = true;
+    options.StartTimeout = TimeSpan.FromSeconds(30);
+    options.StopTimeout = TimeSpan.FromMinutes(1);
+});
+
 var app = builder.Build();
 
 app.MigrateDatabase<OrderContext>((context, services) =>
