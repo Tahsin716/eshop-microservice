@@ -1,9 +1,10 @@
 ﻿using Shopping.Aggregator.Extensions;
 using Shopping.Aggregator.Models;
+using Shopping.Aggregator.Services.Contracts;
 
 namespace Shopping.Aggregator.Services
 {
-    public class BasketService
+    public class BasketService : IBasketService
     {
         private readonly HttpClient _client;
 
