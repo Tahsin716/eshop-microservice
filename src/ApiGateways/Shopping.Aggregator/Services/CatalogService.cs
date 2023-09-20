@@ -15,7 +15,7 @@ namespace Shopping.Aggregator.Services
 
         public async Task<IEnumerable<CatalogModel>> GetCatalog()
         {
-            var response = await _client.GetAsync("/api/v1/Catalog");
+            var response = await _client.GetAsync("/api/v1/Catalog/GetProducts");
             return await response.ReadContentAs<List<CatalogModel>>();
         }
 
