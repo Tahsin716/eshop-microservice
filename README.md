@@ -9,5 +9,5 @@ Several microservices have been developed to implement e-commerce functionality,
 
 ## Requirements
 
-* [.NET 6 or later versions](https://dotnet.microsoft.com/download/dotnet-core/6)
+* [.NET 6 or later versions](https://dotnet.microsoft.com/download/dotnet-core/6.0)
 * [Docker Desktop](https://www.docker.com/products/docker-desktop)
