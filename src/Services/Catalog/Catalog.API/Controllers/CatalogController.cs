@@ -18,7 +18,6 @@ namespace Catalog.API.Controllers
             _logger = logger;
         }
 
-        [Route("[action]", Name = "GetProducts")]
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
@@ -59,7 +58,6 @@ namespace Catalog.API.Controllers
             return Ok(products);
         }
 
-        [Route("[action]", Name = "CreateProduct")]
         [HttpPost]
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Product>> CreateProduct([FromBody] Product product)
@@ -69,7 +67,6 @@ namespace Catalog.API.Controllers
             return CreatedAtRoute("GetProduct", new { id = product.Id }, product);
         }
 
-        [Route("[action]", Name = "UpdateProduct")]
         [HttpPut]
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> UpdateProduct([FromBody] Product product)
