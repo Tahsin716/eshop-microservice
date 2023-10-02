@@ -85,7 +85,7 @@ _Note:_ gRPC Server uses http/2 protocol and can only be communicated internally
 - Implemented an Aggregator Microservice
 - Aggregates data from Catalog, Basket, and Order microservice for fetching data faster than individually call microservices for the data.
 
-## API GateWay
+## API Gateway
 
 [http://localhost:8010](http://localhost:8010)
 
