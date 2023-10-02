@@ -16,7 +16,7 @@ builder.Services.AddOcelot(builder.Configuration);
 
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => "API Gateway up an running!");
 
 app.UseRouting();
 app.UseEndpoints(endpoints => endpoints.MapControllers());
