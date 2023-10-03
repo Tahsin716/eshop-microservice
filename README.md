@@ -83,7 +83,7 @@ _Note:_ gRPC Server uses http/2 protocol and can only be communicated internally
 ![Shopping.Aggregator](https://github.com/Tahsin716/eshop-microservice/blob/main/docs/img/shopping-aggregator.PNG)
 
 - Implemented an Aggregator Microservice
-- Aggregates data from Catalog, Basket, and Order microservice for fetching data faster than individually call microservices for the data.
+- Aggregates data from Catalog, Basket, and Order microservice for fetching data faster than individually calling microservices for the data.
 
 ## API Gateway
 
